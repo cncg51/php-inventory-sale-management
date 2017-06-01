@@ -1,7 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" />
 	<base href="<?php echo base_url();?>" />
 	<title><?php echo $this->config->item('company') . ' | ' . $this->lang->line('common_powered_by') . ' OSPOS ' . $this->config->item('application_version') ?></title>
 	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
@@ -92,13 +93,13 @@
 	<div class="wrapper" id="body-content">
 		<div class="topbar">
 			<div class="container">
-				<div class="navbar-left">
+				<div class="pull-left">
 					<span title="当前查看的仓库位置"><?php echo $user_info->location_name;?></span>
 					&nbsp;
 					<a href="employees/locations" class="modal-dlg">[查看其他仓库]</a>
 				</div>
 				
-				<div class="navbar-right" style="margin:0">
+				<div class="pull-right" style="margin:0">
 					<?php echo $this->config->item('company') . "  |  $user_info->first_name $user_info->last_name  |  " . ($this->input->get("debug") == "true" ? $this->session->userdata('session_sha1') : ""); ?>
 					<?php echo anchor("home/logout", $this->lang->line("common_logout")); ?>
 				</div>

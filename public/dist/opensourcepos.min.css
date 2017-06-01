@@ -3100,11 +3100,13 @@ a.none {
 .module_item {
 	min-width: 7em;
 	display: inline-block;
-	text-align: center
+	text-align: center;
+	padding:1rem;
 }
 
 .module_item a {
-	display: block
+	display: block;
+	padding-bottom: 10px;
 }
 
 #config_wrapper {
@@ -3147,6 +3149,10 @@ button.btn.dropdown-toggle.btn-sm {
 
 label.required {
 	color: red
+}
+
+.navbar-collapse>ul>li{
+	display: inline-block;
 }
 
 @media (min-width:768px) {
