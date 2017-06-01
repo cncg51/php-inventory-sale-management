@@ -885,11 +885,11 @@ class Transports extends Secure_Controller
 		$infos['transport_items_location']=$this->transport_lib->get_transaction_items_location();
 
 		if(empty($stock_location_id)||$stock_location_id<0){
-        $this->_reload($this->transport_lib->mark_unedited_transaction(array('error'=>'请填写收获仓库地址')));return;
+        $this->_reload($this->transport_lib->mark_unedited_transaction(array('error'=>'请填写收货仓库地址')));return;
         }
         if($stock_location_id==$infos['transport_items_location']){
             $this->_reload($this->transport_lib->mark_unedited_transaction(
-                    array('error'=>'收获仓库不能为当前所在的仓库')));return;    
+                    array('error'=>'收货仓库不能为当前所在的仓库')));return;    
         }
 
 		$data = array();
