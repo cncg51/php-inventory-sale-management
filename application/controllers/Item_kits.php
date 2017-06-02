@@ -17,6 +17,8 @@ class Item_kits extends Secure_Controller
 		$item_kit->total_cost_price = 0;
 		$item_kit->total_unit_price = 0;
 		
+		$item_ids=array();$item_quantites=array();
+
 		foreach($this->Item_kit_items->get_info($item_kit->item_kit_id) as $item_kit_item)
 		{
 			$item_info = $this->Item->get_info($item_kit_item['item_id']);
@@ -27,7 +29,18 @@ class Item_kits extends Secure_Controller
 			
 			$item_kit->total_cost_price += $item_info->cost_price * $item_kit_item['quantity'];
 			$item_kit->total_unit_price += $item_info->unit_price * $item_kit_item['quantity'];
+
+			$item_ids[]=$item_info->item_id;$item_quantites[$item_info->item_id]=$item_kit_item['quantity'];
 		}
+
+		$item_infos = $this->Item->get_multiple_info($item_ids, $this->Stock_location->get_default_location_id());
+		$result = array();$max_quantity=-1;
+		foreach($item_infos->result() as $item_info){
+			$quantity=floor($item_info->quantity/$item_quantites[$item_info->item_id]);
+
+			if($max_quantity<0||$max_quantity>$quantity){$max_quantity=$quantity;}
+		}
+		$item_kit->quantity=$max_quantity;
 
 		return $item_kit;
 	}

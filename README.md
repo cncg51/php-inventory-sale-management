@@ -1,4 +1,4 @@
-#php-inventory-sale-management
+# php-inventory-sale-management
 
 这个项目基于jekkos的开源项目[opensourcepos](https://github.com/jekkos/opensourcepos)，版本号是3.0.2
 
