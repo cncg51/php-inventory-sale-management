@@ -57,7 +57,7 @@ $(document).ready(function()
 });
 </script>
 
-<div id="title_bar" class="print_hide btn-toolbar">
+<div id="title_bar" class="btn-toolbar">
 	<a href="<?php echo $controller_name;?>/load" class="btn btn-info btn-sm pull-right">打开正在编辑的<?php echo $this->lang->line('module_'.$controller_name);?></a>
 	<a href="<?php echo $controller_name;?>/create" class="btn btn-info btn-sm pull-right">创建新的<?php echo $this->lang->line('module_'.$controller_name);?></a>
 </div>

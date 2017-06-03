@@ -44,7 +44,7 @@ $(document).ready(function()
 });
 </script>
 
-<div id="title_bar" class="btn-toolbar print_hide">
+<div id="title_bar" class="btn-toolbar print_hide mobile_hide">
     <button class='btn btn-info btn-sm pull-right modal-dlg' data-btn-submit='<?php echo $this->lang->line('common_submit') ?>' data-href='<?php echo site_url($controller_name."/view"); ?>'
             title='<?php echo $this->lang->line($controller_name . '_new'); ?>'>
         <span class="glyphicon glyphicon-tag">&nbsp</span><?php echo $this->lang->line($controller_name. '_new'); ?>

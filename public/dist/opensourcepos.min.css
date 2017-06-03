@@ -3498,3 +3498,7 @@ label.required {
 #main-content{
 	padding-bottom: 60px;
 }
+
+.touch .mobile_hide,.touch .print_hide{
+	display: none;
+}

@@ -8,9 +8,9 @@ function get_sales_manage_table_headers()
 		array('sale_id' => $CI->lang->line('common_id')),
 		array('sale_time' => $CI->lang->line('transaction_time')),
 		array('customer_name' => $CI->lang->line('customers_customer')),
-		array('amount_due' => $CI->lang->line('transaction_amount_due')),
-		array('amount_tendered' => $CI->lang->line('transaction_amount_tendered')),
-		array('change_due' => $CI->lang->line('transaction_change_due')),
+		array('amount_due_price' => $CI->lang->line('transaction_amount_due')),
+		array('amount_tendered_price' => $CI->lang->line('transaction_amount_tendered')),
+		array('change_due_price' => $CI->lang->line('transaction_change_due')),
 		//array('payment_type' => $CI->lang->line('sales_payment_type'))
 	);
 	
@@ -43,9 +43,9 @@ function get_sale_data_last_row($sales, $controller)
 	return array(
 		'sale_id' => '-',
 		'sale_time' => '<b>'.$CI->lang->line('sales_total').'</b>',
-		'amount_due' => '<b>'.to_currency($sum_amount_due).'</b>',
-		'amount_tendered' => '<b>'. to_currency($sum_amount_tendered).'</b>',
-		'change_due' => '<b>'.to_currency($sum_change_due).'</b>'
+		'amount_due_price' => '<b>'.to_currency($sum_amount_due).'</b>',
+		'amount_tendered_price' => '<b>'. to_currency($sum_amount_tendered).'</b>',
+		'change_due_price' => '<b>'.to_currency($sum_change_due).'</b>'
 	);
 }
 
@@ -58,9 +58,9 @@ function get_sale_data_row($sale, $controller)
 		'sale_id' => $sale->sale_id,
 		'sale_time' => date( $CI->config->item('dateformat') . ' ' . $CI->config->item('timeformat'), strtotime($sale->sale_time) ),
 		'customer_name' => $sale->customer_name,
-		'amount_due' => to_currency($sale->amount_due),
-		'amount_tendered' => to_currency($sale->amount_tendered),
-		'change_due' => to_currency($sale->change_due),
+		'amount_due_price' => to_currency($sale->amount_due),
+		'amount_tendered_price' => to_currency($sale->amount_tendered),
+		'change_due_price' => to_currency($sale->change_due),
 		//'payment_type' => $sale->payment_type
 	);
 
@@ -126,6 +126,12 @@ function transform_headers_readonly($array)
 	return json_encode($result);
 }
 
+function is_price($key){
+	$array=explode("_",$key);
+
+	return end($array)=='price';
+}
+
 function transform_headers($array, $readonly = FALSE, $editable = TRUE)
 {
 	$result = array();
@@ -150,7 +156,7 @@ function transform_headers($array, $readonly = FALSE, $editable = TRUE)
 				$element['sortable'] : current($element) != '',
 			'checkbox' => isset($element['checkbox']) ?
 				$element['checkbox'] : FALSE,
-			'class' => isset($element['checkbox']) || preg_match('(^$|&nbsp)', current($element)) ?
+			'class' => isset($element['checkbox']) || preg_match('(^$|&nbsp)', current($element)) || is_price(key($element)) ?
 				'print_hide' : '',
 			'sorter' => isset($element['sorter']) ?
 				$element ['sorter'] : '');

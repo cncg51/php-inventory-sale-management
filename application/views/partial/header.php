@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js">
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" />
@@ -7,6 +7,8 @@
 	<title><?php echo $this->config->item('company') . ' | ' . $this->lang->line('common_powered_by') . ' OSPOS ' . $this->config->item('application_version') ?></title>
 	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="<?php echo 'dist/bootswatch/' . (empty($this->config->item('theme')) ? 'flatly' : $this->config->item('theme')) . '/bootstrap.min.css' ?>"/>
+
+	<script src="https://upcdn.b0.upaiyun.com/libs/modernizr/modernizr-2.7.1.min.js"></script>
 
 	<?php if ($this->input->cookie('debug') == "true" || $this->input->get("debug") == "true") : ?>
 		<!-- bower:css -->
@@ -91,7 +93,7 @@
 
 <body>
 	<div class="wrapper" id="body-content">
-		<div class="topbar">
+		<div class="topbar mobile_hide">
 			<div class="container">
 				<div class="pull-left">
 					<span title="当前查看的仓库位置"><?php echo $user_info->location_name;?></span>
