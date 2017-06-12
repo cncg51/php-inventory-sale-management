@@ -3136,7 +3136,7 @@ button.btn.dropdown-toggle.btn-sm {
 }
 
 #add_item_form,#overall_sale {
-	background-color: #BBB
+	background-color: lightgray;
 }
 
 #mode_form,#payment_details {
@@ -3349,7 +3349,7 @@ label.required {
 }
 
 #add_item_form .panel-body,#mode_form .panel-body {
-	padding: .7em;
+	padding: .7em 0;
 	margin: 0
 }
 
@@ -3501,4 +3501,21 @@ label.required {
 
 .touch .mobile_hide,.touch .print_hide{
 	display: none;
+}
+
+@media (max-width: 600px) {
+	#register_wrapper,#overall_sale{
+		width: 100% !important;
+	}
+
+	#overall_sale{
+		position: fixed;
+		bottom: 0;
+		margin: 0;
+		padding-bottom: 3rem;
+	}
+}
+
+a{
+	text-decoration: none !important;
 }

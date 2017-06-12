@@ -28,11 +28,11 @@ $transaction_editable=(!isset($transaction_editable)||$transaction_editable==1);
 	<?php echo form_open($controller_name."/add", array('id'=>'add_item_form', 'class'=>'form-horizontal panel panel-default')); ?>
 		<div class="panel-body form-group">
 			<ul>
-				<li class="pull-left first_li">
+				<li class="pull-left first_li mobile_hide">
 					<label for="item" class='control-label'>物品(包)名称</label>
 				</li>
 				<li class="pull-left">
-					<?php echo form_input(array('name'=>'item', 'id'=>'item', 'class'=>'form-control input-sm', 'size'=>'35','placeholder'=>"请在这里输入并选择正确的名称",'tabindex'=>++$tabindex)); ?>
+					<?php echo form_input(array('name'=>'item', 'id'=>'item', 'class'=>'form-control input-sm','placeholder'=>"输入并选择产品名称",'tabindex'=>++$tabindex)); ?>
 					<span class="ui-helper-hidden-accessible" role="status"></span>
 				</li>
 
@@ -64,12 +64,12 @@ $transaction_editable=(!isset($transaction_editable)||$transaction_editable==1);
 		<thead>
 			<tr>
 				<th style="width: 5%;"><?php echo $this->lang->line('common_delete'); ?></th>
-				<th style="width: 10%;"><?php echo $this->lang->line('sales_item_number'); ?></th>
+				<th style="width: 10%;" class="mobile_hide"><?php echo $this->lang->line('sales_item_number'); ?></th>
 				<th style="width: 35%;"><?php echo $this->lang->line('sales_item_name'); ?></th>
-				<th style="width: 15%;"><?php echo $this->lang->line('sales_price'); ?></th>
+				<th style="width: 15%;" class="mobile_hide"><?php echo $this->lang->line('sales_price'); ?></th>
 				<th style="width: 15%;"><?php echo $this->lang->line('sales_quantity'); ?></th>
-				<th style="width: 15%;"><?php echo $this->lang->line('sales_total'); ?></th>
-				<th style="width: 5%;"><?php echo $this->lang->line('sales_update'); ?></th>
+				<th style="width: 15%;" class="mobile_hide"><?php echo $this->lang->line('sales_total'); ?></th>
+				<th style="width: 5%;" class="mobile_hide"><?php echo $this->lang->line('sales_update'); ?></th>
 			</tr>
 		</thead>
 
@@ -98,7 +98,7 @@ $transaction_editable=(!isset($transaction_editable)||$transaction_editable==1);
 								<?php } ?>
 							</td>
 							
-							<td><?php echo $item['item_id'];if(1==$item['is_item_kit']){echo "号物品包";} ?></td>
+							<td class="mobile_hide"><?php echo $item['item_id'];if(1==$item['is_item_kit']){echo "号物品包";} ?></td>
 							<td style="align: center;">
 								<a href="<?php if(1==$item['is_item_kit']){echo 'item_kits/view/';}else{echo 'items/view/';}echo $item['item_id'];?>" class="modal-dlg"><?php echo $item['name']; ?></a>
 
@@ -112,13 +112,13 @@ $transaction_editable=(!isset($transaction_editable)||$transaction_editable==1);
 							if ($items_module_allowed)
 							{
 							?>
-								<td><?php echo form_input(array('name'=>'price', 'class'=>'form-control input-sm', 'value'=>to_currency_no_money($item['price']), 'tabindex'=>++$tabindex));?></td>
+								<td class="mobile_hide"><?php echo form_input(array('name'=>'price', 'class'=>'form-control input-sm', 'value'=>to_currency_no_money($item['price']), 'tabindex'=>++$tabindex));?></td>
 							<?php
 							}
 							else
 							{
 							?>
-								<td>
+								<td class="mobile_hide">
 									<?php echo to_currency($item['price']); ?>
 									<?php echo form_hidden('price', to_currency_no_money($item['price'])); ?>
 								</td>
@@ -140,8 +140,8 @@ $transaction_editable=(!isset($transaction_editable)||$transaction_editable==1);
 								?>
 							</td>
 
-							<td><?php echo to_currency($item['price']*$item['quantity']-$item['price']*$item['quantity']*$item['discount']/100); ?></td>
-							<td>
+							<td class="mobile_hide"><?php echo to_currency($item['price']*$item['quantity']-$item['price']*$item['quantity']*$item['discount']/100); ?></td>
+							<td class="mobile_hide">
 								<?php if($transaction_editable){ ?>
 								<a href="javascript:document.getElementById('<?php echo 'cart_'.$line ?>').submit();" title=<?php echo $this->lang->line('sales_update')?> ><span class="glyphicon glyphicon-refresh"></span></a>
 								<?php } ?>
@@ -226,7 +226,7 @@ $transaction_editable=(!isset($transaction_editable)||$transaction_editable==1);
 		if(count($cart) > 0)
 		{
 		?>
-			<table class="sales_table_100" id="payment_totals">
+			<table class="sales_table_100 mobile_hide" id="payment_totals">
 				<tr>
 					<th style='width: 55%;'><?php echo $this->lang->line('sales_total'); ?></th>
 					<th style="width: 45%; text-align: right;"><?php echo to_currency($total); ?></th>
@@ -241,7 +241,7 @@ $transaction_editable=(!isset($transaction_editable)||$transaction_editable==1);
 				</tr>
 			</table>
 
-			<div id="payment_details">
+			<div id="payment_details" class="mobile_hide">
 					<?php
 					// Show Complete sale button instead of Add Payment if there is no amount due left
 					if($payments_cover_total){

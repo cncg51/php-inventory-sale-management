@@ -85,6 +85,8 @@ function get_sale_data_row($sale, $controller)
 		);
 	}
 
+	$row['sale_time'].=anchor("sales/update?id=$sale->sale_id", '（详情）',array('target'=>'_blank'));
+
 	return $row;
 }
 

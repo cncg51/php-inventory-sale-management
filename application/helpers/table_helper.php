@@ -85,6 +85,8 @@ function get_sale_data_row($sale, $controller)
 		);
 	}
 
+	$row['sale_time'].=anchor("sales/update?id=$sale->sale_id", '（详情）',array('target'=>'_blank'));
+
 	return $row;
 }
 
@@ -459,6 +461,8 @@ function get_receiving_data_row($receiving, $controller)
 		);
 	}
 
+	$row['receiving_time'].=anchor("receivings/update?id=$receiving->receiving_id", '（详情）',array('target'=>'_blank'));
+
 	return $row;
 }
 
@@ -547,6 +551,8 @@ function get_manufacture_data_row($manufacture, $controller)
 		);
 	}
 
+	$row['manufacture_time'].=anchor("manufactures/update?id=$manufacture->manufacture_id", '（详情）',array('target'=>'_blank'));
+
 	return $row;
 }
 
@@ -634,6 +640,8 @@ function get_transport_data_row($transport, $controller)
 			array('class' => 'modal-dlg print_hide', 'data-btn-delete' => $CI->lang->line('common_delete'), 'data-btn-submit' => $CI->lang->line('common_submit'), 'title' => $CI->lang->line($controller_name.'_update'))
 		);
 	}
+
+	$row['transport_time'].=anchor("transports/update?id=$transport->transport_id", '（详情）',array('target'=>'_blank'));
 
 	return $row;
 }
