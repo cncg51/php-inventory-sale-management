@@ -3519,3 +3519,19 @@ label.required {
 a{
 	text-decoration: none !important;
 }
+
+.modal {
+   top:auto;
+}
+#modal-quantity .modal-body,#modal-quantity .modal-footer{
+    text-align: center;
+}
+#modal-quantity button.btn-half{
+    width: 40%;
+}
+
+#modal-quantity .modal-body input{
+	width: 10rem;
+	text-align: center;
+	margin: auto;
+}

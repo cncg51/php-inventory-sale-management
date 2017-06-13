@@ -40,7 +40,7 @@ $transaction_editable=(!isset($transaction_editable)||$transaction_editable==1);
 					<a href="<?php echo $controller_name;?>/manage<?php if(!empty($transaction_id)){echo '?from_id='.$transaction_id;} ?>" class="btn btn-info btn-sm pull-right">返回列表</a>
 				</li>
 
-				<li class="pull-right">
+				<li class="pull-right mobile_hide">
 				<?php if(!empty($transaction_id)) { ?>
 				<a href="<?php echo $controller_name;?>/edit/<?php echo $transaction_id?>" class="modal-dlg btn btn-info btn-sm pull-right">更多信息</a>
 				<?php } ?>
@@ -135,7 +135,7 @@ $transaction_editable=(!isset($transaction_editable)||$transaction_editable==1);
 								}
 								else
 								{								
-									echo form_input(array('name'=>'quantity', 'class'=>'form-control input-sm', 'value'=>to_quantity_decimals($item['quantity']), 'tabindex'=>++$tabindex));
+									echo form_input(array('name'=>'quantity', 'class'=>'form-control input-sm', 'value'=>to_quantity_decimals($item['quantity']), 'tabindex'=>++$tabindex,'form_id'=>'cart_'.$line));
 								}
 								?>
 							</td>
@@ -155,6 +155,33 @@ $transaction_editable=(!isset($transaction_editable)||$transaction_editable==1);
 		</tbody>
 	</table>
 </div>
+
+	<div id="modal-quantity" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <?php echo form_input(array('class'=>'form-control input-sm')); ?>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-half" data-dismiss="modal">取消</button>
+                    <button class="btn btn-half btn-primary" id="btn_quantity_submit" data-dismiss="modal">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    	$(".touch input[name=quantity]").on('click',function(){
+    		$("#btn_quantity_submit").attr('form_id',$(this).attr('form_id'))
+			$("#modal-quantity").find('input').val($(this).val());
+
+    		$("#modal-quantity").modal()
+    	})
+    	$("#btn_quantity_submit").on('click',function(){
+    		var v=$("#modal-quantity").find('input').val();
+    		$("input[form_id="+$(this).attr('form_id')+"]").val(v)
+    		$("form#"+$(this).attr('form_id')).submit()
+    	})
+    </script>
 
 <!-- Overall Sale -->
 
