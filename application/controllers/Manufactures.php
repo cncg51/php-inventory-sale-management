@@ -134,7 +134,7 @@ class Manufactures extends Secure_Controller
 			$suggestions[] = $receipt;
 		}
 		$suggestions = array_merge($suggestions, $this->Item_kit->get_search_suggestions($search));
-		$suggestions = array_merge($suggestions, $this->Item->get_search_suggestions($search, array('search_custom' => FALSE, 'is_deleted' => FALSE), TRUE));
+		
 		
 		$suggestions = $this->xss_clean($suggestions);
 
