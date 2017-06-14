@@ -3502,6 +3502,9 @@ label.required {
 .touch .mobile_hide,.touch .print_hide{
 	display: none;
 }
+.touch #table_holder .fixed-table-toolbar{
+	display: none;
+}
 
 @media (max-width: 600px) {
 	#register_wrapper,#overall_sale{
@@ -3513,6 +3516,7 @@ label.required {
 		bottom: 0;
 		margin: 0;
 		padding-bottom: 3rem;
+		background-color: transparent;
 	}
 }
 
@@ -3520,7 +3524,7 @@ a{
 	text-decoration: none !important;
 }
 
-.modal {
+.touch .modal {
    top:auto;
 }
 #modal-quantity .modal-body,#modal-quantity .modal-footer{

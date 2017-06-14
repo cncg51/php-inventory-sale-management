@@ -7,7 +7,7 @@ function get_sales_manage_table_headers()
 	$headers = array(
 		array('sale_id' => $CI->lang->line('common_id')),
 		array('sale_time' => $CI->lang->line('transaction_time')),
-		array('customer_name' => $CI->lang->line('customers_customer')),
+		//array('customer_name' => $CI->lang->line('customers_customer')),
 		array('amount_due_price' => $CI->lang->line('transaction_amount_due')),
 		array('amount_tendered_price' => $CI->lang->line('transaction_amount_tendered')),
 		array('change_due_price' => $CI->lang->line('transaction_change_due')),
@@ -57,7 +57,7 @@ function get_sale_data_row($sale, $controller)
 	$row = array (
 		'sale_id' => $sale->sale_id,
 		'sale_time' => date( $CI->config->item('dateformat') . ' ' . $CI->config->item('timeformat'), strtotime($sale->sale_time) ),
-		'customer_name' => $sale->customer_name,
+		//'customer_name' => $sale->customer_name,
 		'amount_due_price' => to_currency($sale->amount_due),
 		'amount_tendered_price' => to_currency($sale->amount_tendered),
 		'change_due_price' => to_currency($sale->change_due),
@@ -294,7 +294,7 @@ function get_item_data_row($item, $controller)
 	return array (
 		'items.item_id' => $item->item_id,
 		//'item_number' => $item->item_number,
-		'name' => $item->name,
+		'name' => anchor($controller_name."/count_details/$item->item_id",$item->name,array('class' => 'modal-dlg')),
 		//'category' => $item->category,
 		//'company_name' => $item->company_name,
 		//'cost_price' => to_currency($item->cost_price),
@@ -366,7 +366,7 @@ function get_item_kit_data_row($item_kit, $controller)
 
 	return array (
 		'item_kit_id' => $item_kit->item_kit_id,
-		'name' => $item_kit->name,
+		'name' => anchor($controller_name."/view/$item_kit->item_kit_id",$item_kit->name,array('class'=>'modal-dlg')),
 		'quantity' => $item_kit->quantity,
 		'cost_price' => to_currency($item_kit->total_cost_price),
 		'unit_price' => to_currency($item_kit->total_unit_price),
@@ -383,7 +383,7 @@ function get_receivings_manage_table_headers()
 	$headers = array(
 		array('receiving_id' => $CI->lang->line('common_id')),
 		array('receiving_time' => $CI->lang->line('transaction_time')),
-		array('supplier_name' => $CI->lang->line('suppliers_supplier')),
+		//array('supplier_name' => $CI->lang->line('suppliers_supplier')),
 		array('amount_due_price' => $CI->lang->line('transaction_amount_due')),
 		array('amount_tendered_price' => $CI->lang->line('transaction_amount_tendered')),
 		array('change_due_price' => $CI->lang->line('transaction_change_due')),
@@ -433,7 +433,7 @@ function get_receiving_data_row($receiving, $controller)
 	$row = array (
 		'receiving_id' => $receiving->receiving_id,
 		'receiving_time' => date( $CI->config->item('dateformat') . ' ' . $CI->config->item('timeformat'), strtotime($receiving->receiving_time) ),
-		'supplier_name' => $receiving->supplier_name,
+		//'supplier_name' => $receiving->supplier_name,
 		'amount_due_price' => to_currency($receiving->amount_due),
 		'amount_tendered_price' => to_currency($receiving->amount_tendered),
 		'change_due_price' => to_currency($receiving->change_due),
@@ -473,7 +473,7 @@ function get_manufactures_manage_table_headers()
 	$headers = array(
 		array('manufacture_id' => $CI->lang->line('common_id')),
 		array('manufacture_time' => $CI->lang->line('transaction_time')),
-		array('staff_name' => $CI->lang->line('staffs_staff')),
+		//array('staff_name' => $CI->lang->line('staffs_staff')),
 		array('amount_due_price' => $CI->lang->line('transaction_amount_due')),
 		array('amount_tendered_price' => $CI->lang->line('transaction_amount_tendered')),
 		array('change_due_price' => $CI->lang->line('transaction_change_due')),
@@ -523,7 +523,7 @@ function get_manufacture_data_row($manufacture, $controller)
 	$row = array (
 		'manufacture_id' => $manufacture->manufacture_id,
 		'manufacture_time' => date( $CI->config->item('dateformat') . ' ' . $CI->config->item('timeformat'), strtotime($manufacture->manufacture_time) ),
-		'staff_name' => $manufacture->staff_name,
+		//'staff_name' => $manufacture->staff_name,
 		'amount_due_price' => to_currency($manufacture->amount_due),
 		'amount_tendered_price' => to_currency($manufacture->amount_tendered),
 		'change_due_price' => to_currency($manufacture->change_due),
@@ -563,7 +563,7 @@ function get_transports_manage_table_headers()
 	$headers = array(
 		array('transport_id' => $CI->lang->line('common_id')),
 		array('transport_time' => $CI->lang->line('transaction_time')),
-		array('stock_location_name' => $CI->lang->line('stock_locations_stock_location')),
+		//array('stock_location_name' => $CI->lang->line('stock_locations_stock_location')),
 		array('amount_due_price' => $CI->lang->line('transaction_amount_due')),
 		array('amount_tendered_price' => $CI->lang->line('transaction_amount_tendered')),
 		array('change_due_price' => $CI->lang->line('transaction_change_due')),
@@ -613,7 +613,7 @@ function get_transport_data_row($transport, $controller)
 	$row = array (
 		'transport_id' => $transport->transport_id,
 		'transport_time' => date( $CI->config->item('dateformat') . ' ' . $CI->config->item('timeformat'), strtotime($transport->transport_time) ),
-		'stock_location_name' => $transport->stock_location_name,
+		//'stock_location_name' => $transport->stock_location_name,
 		'amount_due_price' => to_currency($transport->amount_due),
 		'amount_tendered_price' => to_currency($transport->amount_tendered),
 		'change_due_price' => to_currency($transport->change_due),

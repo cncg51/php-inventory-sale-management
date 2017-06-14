@@ -737,7 +737,7 @@ class Manufacture_lib
 	{
 		$state=$this->CI->session->userdata($this->prefix.'_mail_state');
 
-		return empty($state)?0:$state;
+		return empty($state)?3:$state;
 	}
 
 	public function set_mailState($state) 

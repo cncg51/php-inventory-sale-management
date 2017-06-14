@@ -7,6 +7,11 @@ if(typeof(last_start_date)!='undefined'){
 	start_date=last_start_date;end_date=last_end_date;
 }
 
+if($("html.touch").length>0){
+	start_date="<?php echo date($this->config->item('dateformat'), mktime(0,0,0,01,01,2010));?>";
+	end_date="<?php echo date($this->config->item('dateformat'), mktime(0,0,0,date("m"),date("d")+1,date("Y"))-1);?>";
+}
+
 $('#daterangepicker').daterangepicker({
 	"ranges": {
 		"<?php echo $this->lang->line("datepicker_today"); ?>": [

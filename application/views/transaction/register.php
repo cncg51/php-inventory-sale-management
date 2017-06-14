@@ -161,7 +161,7 @@ $transaction_editable=(!isset($transaction_editable)||$transaction_editable==1);
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                    <?php echo form_input(array('class'=>'form-control input-sm')); ?>
+                    <?php echo form_input(array('class'=>'form-control input-sm','id'=>'input_modal_qty')); ?>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-half" data-dismiss="modal">取消</button>
@@ -174,6 +174,10 @@ $transaction_editable=(!isset($transaction_editable)||$transaction_editable==1);
     	$(".touch input[name=quantity]").on('click',function(){
     		$("#btn_quantity_submit").attr('form_id',$(this).attr('form_id'))
 			$("#modal-quantity").find('input').val($(this).val());
+
+    		$("#modal-quantity").on("shown.bs.modal",function(){
+    			$("#modal-quantity input").first().focus()
+    		})
 
     		$("#modal-quantity").modal()
     	})
@@ -239,7 +243,7 @@ $transaction_editable=(!isset($transaction_editable)||$transaction_editable==1);
 		else
 		{
 		?>
-			<?php echo form_open($controller_name."/select_".$partner_type, array('id'=>'select_customer_form', 'class'=>'form-horizontal')); ?>
+			<?php echo form_open($controller_name."/select_".$partner_type, array('id'=>'select_customer_form', 'class'=>'form-horizontal mobile_hide')); ?>
 				<div class="form-group" id="select_customer">
 					<label id="customer_label" for="customer" class="control-label" style="margin-bottom: 1em; margin-top: -1em;"><?php echo $this->lang->line($controller_name.'_select_'.$partner_type); ?></label>
 					<?php echo form_input(array('name'=>$partner_type, 'id'=>'customer', 'class'=>'form-control input-sm','placeholder'=>'输入并选择'.$this->lang->line($partner_type.'s_'.$partner_type).'的名字'));?>
@@ -342,13 +346,12 @@ $transaction_editable=(!isset($transaction_editable)||$transaction_editable==1);
 
 			<?php echo form_open($controller_name."/cancel", array('id'=>'buttons_form')); ?>
 				<div class="form-group" id="buttons_sale">
-					<div class='btn btn-sm btn-default pull-left' id='suspend_sale_button'><span class="glyphicon glyphicon-align-justify">&nbsp</span>保存</div>
-
-					<div class='btn btn-sm btn-danger pull-right' id='cancel_sale_button'><span class="glyphicon glyphicon-remove">&nbsp</span>放弃更改</div>
+					<div class='btn btn-sm btn-warning pull-left' id='cancel_sale_button'><span class="glyphicon glyphicon-remove">&nbsp</span>放弃更改</div>
+					<div class='btn btn-sm btn-success pull-right' id='suspend_sale_button'><span class="glyphicon glyphicon-align-justify">&nbsp</span>保存</div>
 				</div>
 			<?php echo form_close(); ?>
 
-				<div class="info_details">
+				<div class="info_details mobile_hide">
 					<table class="sales_table_100">
 						<?php if($controller_name!='manufactures'){ ?>
 						<tr>
@@ -422,15 +425,17 @@ $(document).ready(function()
 		source: '<?php echo site_url($controller_name."/item_search"); ?>',
     	minChars: 0,
     	autoFocus: false,
-       	delay: 500,
+       	delay: 100,
 		select: function (a, ui) {
 			$(this).val(ui.item.value);
 			$("#add_item_form").submit();
 			return false;
 		}
-    });
+    }).focus(function(){            
+        $(this).autocomplete("search");
+	});
 
-	$('#item').focus();
+	//$('#item').focus();
 
 	$('#item').keypress(function (e) {
 		if (e.which == 13) {

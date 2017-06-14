@@ -7,7 +7,7 @@ function get_sales_manage_table_headers()
 	$headers = array(
 		array('sale_id' => $CI->lang->line('common_id')),
 		array('sale_time' => $CI->lang->line('transaction_time')),
-		array('customer_name' => $CI->lang->line('customers_customer')),
+		//array('customer_name' => $CI->lang->line('customers_customer')),
 		array('amount_due_price' => $CI->lang->line('transaction_amount_due')),
 		array('amount_tendered_price' => $CI->lang->line('transaction_amount_tendered')),
 		array('change_due_price' => $CI->lang->line('transaction_change_due')),
@@ -57,7 +57,7 @@ function get_sale_data_row($sale, $controller)
 	$row = array (
 		'sale_id' => $sale->sale_id,
 		'sale_time' => date( $CI->config->item('dateformat') . ' ' . $CI->config->item('timeformat'), strtotime($sale->sale_time) ),
-		'customer_name' => $sale->customer_name,
+		//'customer_name' => $sale->customer_name,
 		'amount_due_price' => to_currency($sale->amount_due),
 		'amount_tendered_price' => to_currency($sale->amount_tendered),
 		'change_due_price' => to_currency($sale->change_due),
@@ -294,7 +294,7 @@ function get_item_data_row($item, $controller)
 	return array (
 		'items.item_id' => $item->item_id,
 		//'item_number' => $item->item_number,
-		'name' => $item->name,
+		'name' => anchor($controller_name."/count_details/$item->item_id",$item->name,array('class' => 'modal-dlg')),
 		//'category' => $item->category,
 		//'company_name' => $item->company_name,
 		//'cost_price' => to_currency($item->cost_price),
@@ -366,7 +366,7 @@ function get_item_kit_data_row($item_kit, $controller)
 
 	return array (
 		'item_kit_id' => $item_kit->item_kit_id,
-		'name' => $item_kit->name,
+		'name' => anchor($controller_name."/view/$item_kit->item_kit_id",$item_kit->name,array('class'=>'modal-dlg')),
 		'quantity' => $item_kit->quantity,
 		'cost_price' => to_currency($item_kit->total_cost_price),
 		'unit_price' => to_currency($item_kit->total_unit_price),

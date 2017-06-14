@@ -1,5 +1,5 @@
 <?php echo form_open('items', array('id'=>'item_form', 'class'=>'form-horizontal')); ?>
-	<fieldset id="count_item_basic_info">
+	<fieldset id="count_item_basic_info" class="mobile_hide">
 		<div class="form-group form-group-sm">
 			<?php echo form_label($this->lang->line('items_item_number'), 'name', array('class'=>'control-label col-xs-3')); ?>
 			<div class="col-xs-8">
@@ -29,7 +29,7 @@
 			</div>
 		</div>
 
-		<div class="form-group form-group-sm">
+		<div class="form-group form-group-sm" class="mobile_hide">
 			<?php echo form_label($this->lang->line('items_category'), 'category', array('class'=>'control-label col-xs-3')); ?>
 			<div class='col-xs-8'>
 				<div class="input-group">
@@ -45,14 +45,14 @@
 			</div>
 		</div>
 
-		<div class="form-group form-group-sm">
+		<div class="form-group form-group-sm" class="mobile_hide">
 			<?php echo form_label($this->lang->line('items_stock_location'), 'stock_location', array('class'=>'control-label col-xs-3')); ?>
 			<div class='col-xs-8'>
 				<?php echo form_dropdown('stock_location', $stock_locations, $user_info->location_id, array('onchange'=>'display_stock(this.value);', 'class'=>'form-control'));	?>
 			</div>
 		</div>
 
-		<div class="form-group form-group-sm">
+		<div class="form-group form-group-sm" class="mobile_hide">
 			<?php echo form_label($this->lang->line('items_current_quantity'), 'quantity', array('class'=>'control-label col-xs-3')); ?>
 			<div class='col-xs-4'>
 				<?php echo form_input(array(
@@ -70,13 +70,13 @@
 <table id="items_count_details" class="table table-striped table-hover">
 	<thead>
 		<tr style="background-color: #999 !important;">
-			<th colspan="4">Inventory Data Tracking</th>
+			<th colspan="4">历史变动记录</th>
 		</tr>
 		<tr>
-			<th width="30%">Date</th>
-			<th width="20%">Employee</th>
-			<th width="20%">In/Out Qty</th>
-			<th width="30%">Remarks</th>
+			<th width="30%">时间</th>
+			<th width="20%" class="mobile_hide">负责人</th>
+			<th width="20%">数量</th>
+			<th width="30%">备注</th>
 		</tr>
 	</thead>
 	<tbody id="inventory_result">
@@ -134,6 +134,7 @@ function display_stock(location_id)
             
             td = document.createElement('td');
             td.appendChild(document.createTextNode(employee_data[index]));
+            td.setAttribute("class", "mobile_hide");
             tr.appendChild(td);
             
             td = document.createElement('td');
@@ -149,10 +150,11 @@ function display_stock(location_id)
             else if(data['ref_type']=='2'){req_url='manufactures';}
             else if(data['ref_type']=='3'){req_url='transports';}
 
-            if(req_url!=null){link.setAttribute("href", req_url+"/update?id="+data['ref_id']);}
+            if(req_url!=null){
+                link.setAttribute("href", req_url+"/update?id="+data['ref_id']);
+                link.setAttribute("target", "_blank");
+            }else{link.setAttribute("style", "color:black;text-decoration:none");}
 
-			link.setAttribute("target", "_blank");
-			link.setAttribute("style", "color:black;text-decoration:none");
             link.appendChild(document.createTextNode(data['trans_comment']));
             td.appendChild(link);
 
