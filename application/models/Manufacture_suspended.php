@@ -139,7 +139,7 @@ class Manufacture_suspended extends CI_Model
 
 					$diff=$quantity_new-$quantity_old;
 					$item_quantity = $this->Item_quantity->get_item_quantity($item_id,$item_loc);
-					$this->Item_quantity->save(array('quantity'		=> $item_quantity->quantity + $diff,
+					$this->Item_quantity->save(array('quantity'		=> $item_quantity->quantity - $diff,
                                               'item_id'		=> $item_id,
                                               'location_id'	=> $item_loc), $item_id, $item_loc);
 
@@ -149,14 +149,14 @@ class Manufacture_suspended extends CI_Model
 					}
 
 					if($quantity_new!=0){//echo $item_id." ".$quantity_old." ".$quantity_new." _";
-						$manufacture_remarks = $this->dbprefix.'(序号'.$manufacture_id.')';
+						$manufacture_remarks = $this->lang->line('module_manufactures').'(序号'.$manufacture_id.')';
 						$inv_data = array(
 							'trans_date'		=> date('Y-m-d H:i:s'),
 							'trans_items'		=> $item_id,
 							'trans_user'		=> $employee_id,
 							'trans_location'	=> $item_loc,
 							'trans_comment'		=> $manufacture_remarks,
-							'trans_inventory'	=> $quantity_new,
+							'trans_inventory'	=> -$quantity_new,
 							'ref_type'=>$this->inventory_ref_type,'ref_id'=>$manufacture_id
 						);
 						$this->Inventory->insert($inv_data);

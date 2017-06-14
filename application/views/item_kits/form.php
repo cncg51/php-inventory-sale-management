@@ -16,7 +16,7 @@
 			</div>
 		</div>
 
-		<div class="form-group form-group-sm">
+		<div class="form-group form-group-sm mobile_hide">
 			<?php echo form_label($this->lang->line('item_kits_description'), 'description', array('class'=>'control-label col-xs-3')); ?>
 			<div class='col-xs-8'>
 				<?php echo form_textarea(array(
@@ -28,7 +28,7 @@
 			</div>
 		</div>
 
-		<div class="form-group form-group-sm">
+		<div class="form-group form-group-sm mobile_hide">
 			<?php echo form_label($this->lang->line('item_kits_add_item'), 'item', array('class'=>'control-label col-xs-3')); ?>
 			<div class='col-xs-8'>
 				<?php echo form_input(array(
@@ -42,8 +42,8 @@
 		<table id="item_kit_items" class="table table-striped table-hover">
 			<thead>
 				<tr>
-					<th width="10%"><?php echo $this->lang->line('common_delete'); ?></th>
-					<th width="70%"><?php echo $this->lang->line('item_kits_item'); ?></th>
+					<th width="20%"><?php echo $this->lang->line('common_delete'); ?></th>
+					<th width="60%"><?php echo $this->lang->line('item_kits_item'); ?></th>
 					<th width="20%"><?php echo $this->lang->line('item_kits_quantity'); ?></th>
 				</tr>
 			</thead>

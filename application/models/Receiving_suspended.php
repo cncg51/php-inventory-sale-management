@@ -150,7 +150,7 @@ class Receiving_suspended extends CI_Model
 					}
 
 					if($quantity_new!=0){//echo $item_id." ".$quantity_old." ".$quantity_new." _";
-						$receiving_remarks = $this->dbprefix.'(序号'.$receiving_id.')';
+						$receiving_remarks = $this->lang->line('module_receivings').'(序号'.$receiving_id.')';
 						$inv_data = array(
 							'trans_date'		=> date('Y-m-d H:i:s'),
 							'trans_items'		=> $item_id,

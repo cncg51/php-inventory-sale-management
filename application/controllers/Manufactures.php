@@ -350,7 +350,7 @@ class Manufactures extends Secure_Controller
 		$discount = 0;//parse_decimals($this->input->post('discount'));
 		$item_location = $this->input->post('location');
 
-		$price=abs($price);
+		$price=abs($price);$quantity=abs($quantity);
 
 		if($this->form_validation->run() != FALSE)
 		{
@@ -717,7 +717,7 @@ class Manufactures extends Secure_Controller
 		$items=$this->manufacture_lib->get_cart();
 		$items=$this->manufacture_lib->unfold_cart($items);
 
-		echo '<table class="table table-bordered quantity-tbl"><thead><tr><th>名称</th><th>数量</th></tr></thead><tbody>';
+		echo '<table class="table table-bordered"><thead><tr><th>名称</th><th>数量</th></tr></thead><tbody>';
 		foreach ($items as $item) {
 			$name=($this->Item->get_info($item['item_id'])->name);
 			$id=$item['quantity'];

@@ -29,10 +29,11 @@ $transaction_editable=(!isset($transaction_editable)||$transaction_editable==1);
 		<div class="panel-body form-group">
 			<ul>
 				<li class="pull-left first_li mobile_hide">
-					<label for="item" class='control-label'>物品(包)名称</label>
+					<label for="item" class='control-label'><?php echo $this->lang->line($controller_name.'_item_name'); ?></label>
 				</li>
 				<li class="pull-left">
-					<?php echo form_input(array('name'=>'item', 'id'=>'item', 'class'=>'form-control input-sm','placeholder'=>"输入并选择产品名称",'tabindex'=>++$tabindex)); ?>
+					<?php echo form_input(array('name'=>'item', 'id'=>'item', 'class'=>'form-control input-sm',
+					'placeholder'=>"输入并选择".$this->lang->line($controller_name.'_item_name'),'tabindex'=>++$tabindex)); ?>
 					<span class="ui-helper-hidden-accessible" role="status"></span>
 				</li>
 
@@ -65,7 +66,7 @@ $transaction_editable=(!isset($transaction_editable)||$transaction_editable==1);
 			<tr>
 				<th style="width: 5%;"><?php echo $this->lang->line('common_delete'); ?></th>
 				<th style="width: 10%;" class="mobile_hide"><?php echo $this->lang->line('sales_item_number'); ?></th>
-				<th style="width: 35%;"><?php echo $this->lang->line('sales_item_name'); ?></th>
+				<th style="width: 35%;"><?php echo $this->lang->line($controller_name.'_item_name'); ?></th>
 				<th style="width: 15%;" class="mobile_hide"><?php echo $this->lang->line('sales_price'); ?></th>
 				<th style="width: 15%;"><?php echo $this->lang->line('sales_quantity'); ?></th>
 				<th style="width: 15%;" class="mobile_hide"><?php echo $this->lang->line('sales_total'); ?></th>

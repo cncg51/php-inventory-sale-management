@@ -149,7 +149,7 @@ class Sale_suspended extends CI_Model
 					}
 
 					if($quantity_new!=0){//echo $item_id." ".$quantity_old." ".$quantity_new." _";
-						$sale_remarks = $this->dbprefix.'(序号'.$sale_id.')';
+						$sale_remarks = $this->lang->line('module_sales').'(序号'.$sale_id.')';
 						$inv_data = array(
 							'trans_date'		=> date('Y-m-d H:i:s'),
 							'trans_items'		=> $item_id,
