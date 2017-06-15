@@ -45,7 +45,8 @@ $(document).ready(function()
 			return $.extend(arguments[0], {
 				start_date: start_date,
 				end_date: end_date,
-				filters: $("#filters").val() || [""]
+				filters: $("#filters").val() || [""],
+				order:'desc',sort:'manufacture_time',limit:10
 			});
 		},
 		columns: {

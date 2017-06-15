@@ -3518,6 +3518,26 @@ label.required {
 		padding-bottom: 3rem;
 		background-color: transparent;
 	}
+
+	li.page-number,.pagination-detail{
+		display: none;
+	}
+
+	.pagination{
+		margin: 0;padding: 0;
+		width: 100%;
+	}
+	.page-next{
+		float: right;
+	}
+	.page-next>a:before{
+		content: "下一页";
+		padding-right: 1rem;
+	}
+	.page-pre>a:after{
+		content: '上一页';
+		padding-left: 1rem;
+	}
 }
 
 a{

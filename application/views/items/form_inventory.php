@@ -86,7 +86,8 @@
 				<?php echo form_textarea(array(
 						'name'=>'trans_comment',
 						'id'=>'trans_comment',
-						'class'=>'form-control input-sm')
+						'class'=>'form-control input-sm',
+						'value'=>$this->lang->line('items_manually_editing_of_quantity'))
 						);?>
 			</div>
 		</div>
