@@ -8,7 +8,7 @@ if (isset($error))
 
 if (!empty($warning))
 {
-	echo "<div class='alert alert-dismissible alert-warning'>".$warning."</div>";
+	echo "<div class='alert alert-dismissible alert-warning mobile_hide'>".$warning."</div>";
 }
 
 if (isset($success))
@@ -38,7 +38,10 @@ $transaction_editable=(!isset($transaction_editable)||$transaction_editable==1);
 				</li>
 
 				<li class="pull-right">
-					<a href="<?php echo $controller_name;?>/manage<?php if(!empty($transaction_id)){echo '?from_id='.$transaction_id;} ?>" class="btn btn-info btn-sm pull-right">返回列表</a>
+					<a href="<?php echo $controller_name;?>/manage<?php if(!empty($transaction_id)){echo '?from_id='.$transaction_id;} ?>" class="btn btn-info btn-sm pull-right">
+						<span class="glyphicon glyphicon-arrow-left"></span>
+						<span class="mobile_hide">&nbsp;返回列表</span>
+					</a>
 				</li>
 
 				<li class="pull-right mobile_hide">
@@ -52,7 +55,10 @@ $transaction_editable=(!isset($transaction_editable)||$transaction_editable==1);
 				</li>-->
 
 				<li>
-				<a href="<?php echo $controller_name;?>/list_items" class="modal-dlg btn btn-info btn-sm pull-right">清单</a>
+				<a href="<?php echo $controller_name;?>/list_items" class="modal-dlg btn btn-info btn-sm pull-right">
+					<span class="glyphicon glyphicon-th-list"></span>
+					<span class="mobile_hide">&nbsp;清单</span>
+				</a>
 				</li>
 			</ul>
 		</div>
@@ -64,9 +70,9 @@ $transaction_editable=(!isset($transaction_editable)||$transaction_editable==1);
 	<table class="sales_table_100" id="register">
 		<thead>
 			<tr>
-				<th style="width: 5%;"><?php echo $this->lang->line('common_delete'); ?></th>
+				<th style="width: 10%;"><?php echo $this->lang->line('common_delete'); ?></th>
 				<th style="width: 10%;" class="mobile_hide"><?php echo $this->lang->line('sales_item_number'); ?></th>
-				<th style="width: 35%;"><?php echo $this->lang->line($controller_name.'_item_name'); ?></th>
+				<th style="width: 30%;"><?php echo $this->lang->line($controller_name.'_item_name'); ?></th>
 				<th style="width: 15%;" class="mobile_hide"><?php echo $this->lang->line('sales_price'); ?></th>
 				<th style="width: 15%;"><?php echo $this->lang->line('sales_quantity'); ?></th>
 				<th style="width: 15%;" class="mobile_hide"><?php echo $this->lang->line('sales_total'); ?></th>
@@ -136,7 +142,7 @@ $transaction_editable=(!isset($transaction_editable)||$transaction_editable==1);
 								}
 								else
 								{								
-									echo form_input(array('name'=>'quantity', 'class'=>'form-control input-sm', 'value'=>to_quantity_decimals($item['quantity']), 'tabindex'=>++$tabindex,'form_id'=>'cart_'.$line));
+									echo form_input(array('name'=>'quantity', 'class'=>'form-control input-sm', 'value'=>to_quantity_decimals($item['quantity']), 'tabindex'=>++$tabindex,'form_id'=>'cart_'.$line,'type'=>'number'));
 								}
 								?>
 							</td>
@@ -161,7 +167,7 @@ $transaction_editable=(!isset($transaction_editable)||$transaction_editable==1);
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                    <?php echo form_input(array('class'=>'form-control input-sm','id'=>'input_modal_qty')); ?>
+                    <?php echo form_input(array('class'=>'form-control input-sm','id'=>'input_modal_qty','type'=>'number')); ?>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-half" data-dismiss="modal">取消</button>
@@ -347,7 +353,7 @@ $transaction_editable=(!isset($transaction_editable)||$transaction_editable==1);
 			<?php echo form_open($controller_name."/cancel", array('id'=>'buttons_form')); ?>
 				<div class="form-group" id="buttons_sale">
 					<div class='btn btn-sm btn-warning pull-left' id='cancel_sale_button'><span class="glyphicon glyphicon-remove">&nbsp</span>放弃更改</div>
-					<div class='btn btn-sm btn-success pull-right' id='suspend_sale_button'><span class="glyphicon glyphicon-align-justify">&nbsp</span>保存</div>
+					<div class='btn btn-sm btn-success pull-right' id='suspend_sale_button'><span class="glyphicon glyphicon-ok">&nbsp</span>保存</div>
 				</div>
 			<?php echo form_close(); ?>
 

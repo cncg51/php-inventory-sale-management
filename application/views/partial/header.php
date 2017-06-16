@@ -88,6 +88,7 @@
 		html {
 			overflow: auto;
 		}
+		<?php echo $this->config->item('hook_style'); ?>
 	</style>
 </head>
 

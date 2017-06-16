@@ -68,9 +68,23 @@
 <?php echo form_close(); ?>
 
 <table id="items_count_details" class="table table-striped table-hover">
+    <?php
+        /*
+         * the tbody content of the table will be filled in by the javascript (see bottom of page)
+        */
+
+        $inventory_array = $this->Inventory->get_inventory_data_for_item($item_info->item_id)->result_array();
+        $employee_name = array();
+
+        foreach($inventory_array as $row)
+        {
+            $employee = $this->Employee->get_info($row['trans_user']);
+            array_push($employee_name, $employee->first_name . ' ' . $employee->last_name);   
+        }
+        ?>
 	<thead>
 		<tr style="background-color: #999 !important;">
-			<th colspan="4">历史变动记录</th>
+			<th colspan="4">最近<?php echo count($inventory_array);?>次 数量变动记录</th>
 		</tr>
 		<tr>
 			<th width="30%">时间</th>
@@ -80,20 +94,7 @@
 		</tr>
 	</thead>
 	<tbody id="inventory_result">
-		<?php
-		/*
-		 * the tbody content of the table will be filled in by the javascript (see bottom of page)
-		*/
-
-		$inventory_array = $this->Inventory->get_inventory_data_for_item($item_info->item_id)->result_array();
-		$employee_name = array();
-
-		foreach($inventory_array as $row)
-		{
-			$employee = $this->Employee->get_info($row['trans_user']);
-			array_push($employee_name, $employee->first_name . ' ' . $employee->last_name);   
-		}
-		?>
+		
 	</tbody>
 </table>
 

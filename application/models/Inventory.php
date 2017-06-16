@@ -15,6 +15,7 @@ class Inventory extends CI_Model
             $this->db->where('trans_location', $location_id);
         }
 		$this->db->order_by('trans_date', 'desc');
+        $this->db->limit(100);
 
 		return $this->db->get();		
 	}

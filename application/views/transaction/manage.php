@@ -46,7 +46,7 @@ $(document).ready(function()
 				start_date: start_date,
 				end_date: end_date,
 				filters: $("#filters").val() || [""],
-				order:'desc',sort:'manufacture_time',limit:10
+				order:'desc',sort:'<?php echo substr($controller_name,0,-1);?>_time',limit:10
 			});
 		},
 		columns: {

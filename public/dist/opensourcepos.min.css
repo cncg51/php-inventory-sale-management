@@ -3517,6 +3517,7 @@ label.required {
 		margin: 0;
 		padding-bottom: 3rem;
 		background-color: transparent;
+		border: none;
 	}
 
 	li.page-number,.pagination-detail{
