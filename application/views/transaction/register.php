@@ -107,7 +107,8 @@ $transaction_editable=(!isset($transaction_editable)||$transaction_editable==1);
 							
 							<td class="mobile_hide"><?php echo $item['item_id'];if(1==$item['is_item_kit']){echo "号物品包";} ?></td>
 							<td style="align: center;">
-								<a href="<?php if(1==$item['is_item_kit']){echo 'item_kits/view/';}else{echo 'items/view/';}echo $item['item_id'];?>" class="modal-dlg"><?php echo $item['name']; ?></a>
+								<!--<a href="<?php if(1==$item['is_item_kit']){echo 'item_kits/view/';}else{echo 'items/view/';}echo $item['item_id'];?>" class="modal-dlg"><?php echo $item['name']; ?></a>-->
+								<?php echo $item['name']; ?>
 
 								<?php if(false&&0==$item['is_infinite']){?>
 								<br /> <?php echo '[' . $item['stock_name']  .' 有 '.  to_quantity_decimals($item['in_stock']) . ']'; ?>
